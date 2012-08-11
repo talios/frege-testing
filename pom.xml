@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.talios.frege</groupId>
+    <artifactId>frege-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>frege-test</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>frege</id>
+            <url>file://${basedir}/repo</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>com.theoryinpractise.frege</groupId>
+                <artifactId>frege-maven-plugin</artifactId>
+                <version>1.0.1</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <testOutputDirectory>src/test/java</testOutputDirectory>
+                    <inline>true</inline>
+                    <!--<verbose>true</verbose>-->
+                    <hints>true</hints>
+                    <sourceFiles>
+                        <sourceFile>greeting.fr</sourceFile>
+                        <sourceFile>frege.fr</sourceFile>
+                    </sourceFiles>
+                    <testSourceFiles>
+                        <testSourceFile>testing.fr</testSourceFile>
+                    </testSourceFiles>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>frege</groupId>
+            <artifactId>frege</artifactId>
+            <version>3.19.112a</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.5.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert-core</artifactId>
+            <version>2.0M7</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.theoryinpractise</groupId>
+            <artifactId>halbuilder</artifactId>
+            <version>2.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+    </dependencies>
+</project>
