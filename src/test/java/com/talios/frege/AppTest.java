@@ -1,7 +1,5 @@
 package com.talios.frege;
 
-import com.theoryinpractise.halbuilder.RepresentationFactory;
-import com.theoryinpractise.halbuilder.spi.Representation;
 import frege.prelude.PreludeBase;
 import frege.rt.Box;
 import org.testng.annotations.Test;
