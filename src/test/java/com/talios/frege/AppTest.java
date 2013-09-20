@@ -4,7 +4,7 @@ import frege.prelude.PreludeBase;
 import frege.rt.Box;
 import org.testng.annotations.Test;
 
-import static com.talios.frege.Greeting.*;
+import static com.talios.frege.Greet.*;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class AppTest {
@@ -29,6 +29,7 @@ public class AppTest {
         assertThat(greet).isEqualTo("Hello there Mark, how are you?");
 
         com.talios.frege.Testing.main(new String[] {""});
+        com.talios.frege.MyFrege.main(new String[] {""});
     }
 
 }
