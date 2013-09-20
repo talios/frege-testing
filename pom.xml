@@ -14,6 +14,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-snapshots</id>            
+            <url>http://oss.sonatype.org/content/repositories/github-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>            
+            <url>http://oss.sonatype.org/content/repositories/github-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -42,12 +61,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!--<outputDirectory>src/main/java</outputDirectory>-->
-                    <!--<testOutputDirectory>src/test/java</testOutputDirectory>-->
                     <inline>true</inline>
-                    <!--<make>false</make>-->
-                    <!--<skipCompile>true</skipCompile>-->
-                    <!--<verbose>true</verbose>-->
                     <hints>true</hints>
                     <sourceFiles>
                         <sourceFile>com/talios/frege/Greet.fr</sourceFile>
@@ -64,10 +78,11 @@
 
     <dependencies>
         <dependency>
+            <!-- frege compiler is attached as an artifact under my GAV to push to central -->
             <groupId>com.theoryinpractise.frege</groupId>
             <artifactId>frege-maven-plugin</artifactId>
-            <version>1.0.3-SNAPSHOT</version>
             <classifier>frege-404-0-ge5bafcf</classifier>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
