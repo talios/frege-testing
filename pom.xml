@@ -12,27 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <frege.plugin.version>1.0.3</frege.plugin.version>
+        <frege.plugin.version>1.0.4</frege.plugin.version>
     </properties>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-snapshots</id>            
-            <url>http://oss.sonatype.org/content/repositories/github-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-    <repositories>
-        <repository>
-            <id>sonatype-snapshots</id>            
-            <url>http://oss.sonatype.org/content/repositories/github-snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -64,13 +45,6 @@
                 <configuration>
                     <inline>true</inline>
                     <hints>true</hints>
-                    <sourceFiles>
-                        <sourceFile>com/talios/frege/Greet.fr</sourceFile>
-                        <sourceFile>com/talios/frege/MyFrege.fr</sourceFile>
-                    </sourceFiles>
-                    <testSourceFiles>
-                        <testSourceFile>testing.fr</testSourceFile>
-                    </testSourceFiles>
                 </configuration>
             </plugin>
 
