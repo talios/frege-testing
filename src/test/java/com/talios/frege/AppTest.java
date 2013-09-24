@@ -28,6 +28,10 @@ public class AppTest {
 
         assertThat(greet).isEqualTo("Hello there Mark, how are you?");
 
+        // create a java class and pass that to our frege function
+        MyJavaClass mjc = com.talios.frege.Testing.makeHim("Made in Java, via Frege");
+        System.out.println("His name is: " + mjc.getName());
+
         com.talios.frege.Testing.main(new String[] {""});
         com.talios.frege.MyFrege.main(new String[] {""});
     }
