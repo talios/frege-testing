@@ -1,7 +1,6 @@
 package com.talios.frege;
 
 import frege.prelude.PreludeBase;
-import frege.rt.Box;
 import org.testng.annotations.Test;
 
 import static com.talios.frege.Greet.*;
@@ -12,9 +11,9 @@ public class AppTest {
     @Test
     public void testDataType() {
 
-        TGreeting newGreeting  = TGreeting.mk(Box.mk("Mark"), TSalutation.mk(Box.mk("Hello there"), Box.mk("Chow!")));
+        TGreeting newGreeting  = TGreeting.mk("Mark", TSalutation.mk("Hello there", "Chow!"));
 
-        System.out.println(MyFrege.testGreeting._e().toString());
+        System.out.println(MyFrege.testGreeting);
 
         assertThat(TGreeting.name(newGreeting)).isEqualTo("Mark");
         assertThat(TSalutation.welcome(TGreeting.salutation(newGreeting))).isEqualTo("Hello there");
@@ -24,7 +23,7 @@ public class AppTest {
 
         System.out.println(farewell);
 
-        PreludeBase.TST.performUnsafe(MyFrege.greet(newGreeting))._e();
+        PreludeBase.TST.performUnsafe(MyFrege.greet(newGreeting));
 
         assertThat(greet).isEqualTo("Hello there Mark, how are you?");
 
