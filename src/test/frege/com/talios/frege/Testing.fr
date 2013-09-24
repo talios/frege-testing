@@ -8,9 +8,7 @@ data ThatJavaClass = pure native com.talios.frege.MyJavaClass where
   pure native makeThat com.talios.frege.MyJavaClass.makeClass :: String -> ThatJavaClass
 
 -- frege function wrapping a pure native method on the java class
-makeHim :: String -> ThatJavaClass
 makeHim s = ThatJavaClass.makeThat s
-
 pure native nameHim getName :: ThatJavaClass -> String
 
 main args = do    
