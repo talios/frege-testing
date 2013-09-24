@@ -1,9 +1,0 @@
-module com.talios.frege.Testing where
-
-import com.talios.frege.Greet
-import com.talios.frege.MyFrege
-
-main args = do
-    println testGreeting
-    println $ show (Greeting "Bob" $ Salutation "Hey there" "See you later")
-

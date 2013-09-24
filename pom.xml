@@ -45,6 +45,7 @@
                 <configuration>
                     <inline>true</inline>
                     <hints>true</hints>
+                    <includeStale>false</includeStale>                    
                 </configuration>
             </plugin>
 
