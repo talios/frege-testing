@@ -1,16 +1,34 @@
 module com.talios.frege.Testing where
 
-import com.talios.frege.Greet
-import com.talios.frege.MyFrege
+import com.talios.frege.meetup.DataTypes
+import com.talios.frege.meetup.Functions
+import com.talios.frege.meetup.NativeTypes
+import com.talios.frege.meetup.MutableNativeTypes
 
--- frege data class wrapping my customer java class
-data ThatJavaClass = pure native com.talios.frege.MyJavaClass where
-  pure native makeThat com.talios.frege.MyJavaClass.makeClass :: String -> ThatJavaClass
+data Product = Product String Double
 
--- frege function wrapping a pure native method on the java class
-makeHim s = ThatJavaClass.makeThat s
-pure native nameHim getName :: ThatJavaClass -> String
+instance Billable Product where
+  amount (Product name price) = price
+  description (Product name price) = "Billable thing is a " ++ name
 
-main args = do    
-    println testGreeting
-    println $ show (Greeting (nameHim $ makeHim "Bobby") $ Salutation "Hey there" "See you later")
+prod = Product "Toy Car" 39.95
+box = Product "Box" 12
+plate = Product "Plate" 5
+products = [box, plate, prod]
+cust = Customer "Mark" "NZD"
+
+buyProducts :: (Billable b) => Customer -> [b] -> PriceType -> Invoice
+buyProducts cust billables priceType = Invoice cust billableItems priceType where
+  billableItems = map (\b -> mkInvoiceItem b 1 FullPrice) billables
+
+invoice = mkInvoice cust prod 5 $ Discounted 10
+javaInvoice = mkInvoice cust (Widget.new "java thing" 29) 1 $ Discounted 10
+
+-- mutateInvoice = do
+--   mw <- MutableWidget.new "java thing" 29
+--   mw.setDescription "mutated java thing"
+--   mkInvoice cust (Mutable.thaw mw) 1 $ Discounted 10
+
+main args = do
+    println $ "The total price of your invoice is " ++ (show $ totalInvoice invoice)
+    println $ "The total price of your java invoice is " ++ (show $ totalInvoice javaInvoice)

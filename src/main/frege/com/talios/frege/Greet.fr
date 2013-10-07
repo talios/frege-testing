@@ -1,7 +1,0 @@
-module com.talios.frege.Greet where
-
-data Salutation = Salutation {welcome :: String, farewell :: String }
-data Greeting = Greeting { name :: String, salutation :: Salutation }
-
-instance Show Greeting where
-  show g = "This is a greeting for " ++ g.name
