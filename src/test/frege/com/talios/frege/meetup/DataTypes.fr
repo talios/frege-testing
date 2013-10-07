@@ -1,0 +1,23 @@
+module com.talios.frege.meetup.DataTypes where
+
+type Currency = String
+data PriceType = FullPrice | Discounted Double
+data Customer = Customer { name :: String, currency :: Currency }
+
+class Billable b where
+  amount      :: b -> Double
+  description :: b -> String
+  taxable     :: b -> Bool
+  taxable b = true
+
+data InvoiceItem = InvoiceItem { quantity :: Double, amount :: Double
+                               , priceType :: PriceType, description :: String }
+
+data Invoice  = Invoice  { cust :: Customer, items :: [InvoiceItem]
+                         , priceType :: PriceType }
+
+
+derive Show Customer
+derive Show PriceType
+derive Show InvoiceItem
+derive Show Invoice

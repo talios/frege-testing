@@ -1,0 +1,13 @@
+module com.talios.frege.meetup.NativeTypes where
+
+import com.talios.frege.meetup.DataTypes
+import com.talios.frege.meetup.Functions
+
+data Widget = pure native com.talios.frege.Widget where
+  pure native new :: String -> Double -> Widget
+  pure native getDescription :: Widget -> String
+  pure native getSalePrice :: Widget -> Double
+
+instance Billable Widget where
+  amount w = w.getSalePrice
+  description w = "Java Billable thing is a " ++ w.getDescription

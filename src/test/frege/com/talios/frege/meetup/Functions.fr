@@ -1,0 +1,21 @@
+module com.talios.frege.meetup.Functions where
+
+import com.talios.frege.meetup.DataTypes
+
+discountedAmount :: Double -> PriceType -> Double
+discountedAmount amount FullPrice       = amount
+discountedAmount amount (Discounted pc) = amount - ( amount * (pc / 100))
+
+mkInvoiceItem :: (Billable b) => b -> Double -> PriceType -> InvoiceItem
+mkInvoiceItem b q p = InvoiceItem q (amount b) p (description b)
+
+mkInvoice :: (Billable b) => Customer -> b -> Double -> PriceType -> Invoice
+mkInvoice c b q p = Invoice c [mkInvoiceItem b q FullPrice] p
+
+invoiceItemAmount :: InvoiceItem -> Double
+invoiceItemAmount item = discountedAmount itemPrice item.priceType where
+  itemPrice = (item.amount * item.quantity)
+
+totalInvoice :: Invoice -> Double
+totalInvoice i = discountedAmount totalPrice i.priceType where
+  totalPrice = sum $ map invoiceItemAmount i.items
