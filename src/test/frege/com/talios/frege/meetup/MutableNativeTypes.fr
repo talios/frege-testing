@@ -3,13 +3,15 @@ module com.talios.frege.meetup.MutableNativeTypes where
 import com.talios.frege.meetup.DataTypes
 import com.talios.frege.meetup.Functions
 
--- data MutableWidget = native com.talios.frege.MutableWidget where
---   native new :: String -> Double -> ST s (Mutable s MutableWidget)
---   pure native getDescription :: MutableWidget -> String
---   pure native getSalePrice :: MutableWidget -> Double
---   native setDescription :: Mutable s MutableWidget -> String -> ST s ()
---   native setSalePrice :: Mutable s MutableWidget -> Double -> ST s ()
+data MutableWidget = native com.talios.frege.MutableWidget where
+   native new :: String -> Double -> ST s (Mutable s MutableWidget)
+   pure native getDescription :: MutableWidget -> String
+   pure native getSalePrice :: MutableWidget -> Double
+   native setDescription :: Mutable s MutableWidget -> String -> ST s ()
+   native setSalePrice :: Mutable s MutableWidget -> Double -> ST s ()
 
--- instance Billable MutableWidget where
---   amount w = w.getSalePrice
---   description w = "Java Billable thing is a " ++ w.getDescription
+instance Cloneable MutableWidget
+
+instance Billable MutableWidget where
+   amount w = w.getSalePrice
+   description w = "Java Billable thing is a " ++ w.getDescription

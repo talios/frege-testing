@@ -1,6 +1,6 @@
 package com.talios.frege;
 
-public class MutableWidget {
+public class MutableWidget implements Cloneable {
   private String description;
   private Double salePrice;
   public MutableWidget(String description, Double salePrice) {
@@ -18,5 +18,9 @@ public class MutableWidget {
   }
   public void setSalePrice(Double salePrice) {
     this.salePrice = salePrice;
+  }
+  @Override
+  public Object clone() {
+    return new MutableWidget(description, salePrice);
   }
 }

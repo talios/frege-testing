@@ -24,11 +24,15 @@ buyProducts cust billables priceType = Invoice cust billableItems priceType wher
 invoice = mkInvoice cust prod 5 $ Discounted 10
 javaInvoice = mkInvoice cust (Widget.new "java thing" 29) 1 $ Discounted 10
 
--- mutateInvoice = do
---   mw <- MutableWidget.new "java thing" 29
---   mw.setDescription "mutated java thing"
---   mkInvoice cust (Mutable.thaw mw) 1 $ Discounted 10
+mutatedInvoice = mkInvoice cust pureWidget 1 $ Discounted 10 where
+   pureWidget = ST.run pureWidgetST
+   pureWidgetST :: ST s MutableWidget
+   pureWidgetST = do
+                    mw <- MutableWidget.new "java thing" 29
+                    mw.setDescription "mutated java thing"
+                    mw.freeze
 
 main args = do
     println $ "The total price of your invoice is " ++ (show $ totalInvoice invoice)
     println $ "The total price of your java invoice is " ++ (show $ totalInvoice javaInvoice)
+    println $ "The total price of your mutated java invoice is " ++ (show $ totalInvoice mutatedInvoice)
