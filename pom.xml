@@ -18,6 +18,14 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.2</version>
@@ -81,9 +89,8 @@
         <dependency>
             <!-- frege compiler is attached as an artifact under my GAV to push to central -->
             <groupId>com.theoryinpractise.frege</groupId>
-            <artifactId>frege-maven-plugin</artifactId>
-            <classifier>frege-3.21.232-g7b05453</classifier>
-            <version>${frege.plugin.version}</version>
+            <artifactId>frege</artifactId>
+            <version>3.21.440-gd7ba043</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
