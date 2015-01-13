@@ -23,11 +23,11 @@
             <plugin>
                 <groupId>io.repaint.maven</groupId>
                 <artifactId>tiles-maven-plugin</artifactId>
-                <version>1.8</version>
+                <version>2.1</version>
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>com.theoryinpractise.frege:frege-maven-tile:1.0.1</tile>
+                        <tile>com.theoryinpractise.frege:frege-maven-tile:xml:1.0.2</tile>
                     </tiles>
                 </configuration>
             </plugin>
