@@ -3,7 +3,9 @@ package com.talios.frege;
 import frege.prelude.PreludeBase;
 import org.testng.annotations.Test;
 
-import static com.talios.frege.Greet.*;
+import static com.talios.frege.Greet.TField;
+import static com.talios.frege.Greet.TGreeting;
+import static com.talios.frege.Greet.TSalutation;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class AppTest {
@@ -30,6 +32,11 @@ public class AppTest {
         // create a java class and pass that to our frege function
         MyJavaClass mjc = com.talios.frege.Testing.makeHim("Made in Java, via Frege");
         System.out.println("His name is: " + mjc.getName());
+
+        TField field = TField.DStandardField.mk("Mark", "title", "fieldType");
+
+        System.out.println("field is: " + Greet.IShow_Field.show(field));
+        System.out.println("name is: " + TField.M.name(field));
 
         com.talios.frege.Testing.main(new String[] {""});
         com.talios.frege.MyFrege.main(new String[] {""});

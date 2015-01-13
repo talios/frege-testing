@@ -11,6 +11,6 @@ data ThatJavaClass = pure native com.talios.frege.MyJavaClass where
 makeHim s = ThatJavaClass.makeThat s
 pure native nameHim getName :: ThatJavaClass -> String
 
-main args = do    
+main args = do
     println testGreeting
     println $ show (Greeting (nameHim $ makeHim "Bobby") $ Salutation "Hey there" "See you later")

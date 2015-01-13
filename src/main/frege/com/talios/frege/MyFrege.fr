@@ -30,6 +30,7 @@ class Discountable d where
 instance Discountable Customer where
   discountFor c = if length c.bills > 5 then 3.0 else 1.0
 
-main _ = println $ "The calculated discount for " ++ cust.name  ++ " is " ++ show discount
+main _ = println $ show afield ++ "The calculated discount for " ++ cust.name  ++ " is " ++ show discount
    where cust     = Customer "Mark" "mark@talios.com" [Bill 30.0, Bill 30.0, Bill 30.0, Bill 30.0, Bill 30.0, Bill 30.0]
          discount = discountFor cust
+         afield   = StandardField "Mark" "Mark" "String"

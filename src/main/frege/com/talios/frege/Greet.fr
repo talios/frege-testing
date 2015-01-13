@@ -5,3 +5,10 @@ data Greeting = Greeting { name :: String, salutation :: Salutation }
 
 instance Show Greeting where
   show g = "This is a greeting for " ++ g.name
+
+data Field = StandardField {name :: String, title :: String, fieldType :: String }
+           | Translated {name :: String, title :: String, fieldType :: String, translationKey :: String }
+           | Composite {left :: Field, right :: Field }
+
+derive Show Field
+
