@@ -3,10 +3,10 @@ package com.talios.frege;
 import frege.prelude.PreludeBase;
 import org.testng.annotations.Test;
 
+import static com.google.common.truth.Truth.assertThat;
 import static com.talios.frege.Greet.TField;
 import static com.talios.frege.Greet.TGreeting;
 import static com.talios.frege.Greet.TSalutation;
-import static org.fest.assertions.api.Assertions.assertThat;
 
 public class AppTest {
 
