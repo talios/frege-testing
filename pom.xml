@@ -23,7 +23,7 @@
             <plugin>
                 <groupId>com.theoryinpractise.frege</groupId>
                 <artifactId>frege-maven-plugin</artifactId>
-                <version>1.0.7</version>
+                <version>1.0.8</version>
                 <executions>
                     <execution>
                         <id>frege-compile</id>
